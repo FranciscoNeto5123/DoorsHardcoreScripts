@@ -148,15 +148,15 @@ Spawner.createEntity = function(config)
 end
 
 Spawner.runEntity = function(entityTable)
-    -- Doors
+    -- Nodes
 
-    local doors = {}
+    local nodes = {}
 
     for _, room in next, workspace.CurrentRooms:GetChildren() do
         local nodes = room:FindFirstChild("PathfindNodes")
         
-        if doors then
-            doors = doors:GetChildren()
+        if nodes then
+            nodes = nodes:GetChildren()
         else
             local fakeNode = Instance.new("Part")
             fakeNode.Name = "1"
@@ -420,7 +420,7 @@ Spawner.runJumpscare = function(config)
         sound2 = loadSound(config.Sound2)
     end
 
-    -- UI Construction
+        -- UI Construction
 
     local JumpscareGui = Instance.new("ScreenGui")
     local Background = Instance.new("Frame")
@@ -429,9 +429,11 @@ Spawner.runJumpscare = function(config)
     JumpscareGui.Name = "JumpscareGui"
     JumpscareGui.IgnoreGuiInset = true
     JumpscareGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    JumpscareGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
     Background.Name = "Background"
-    Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Background.Visible = false
+    Background.BackgroundColor3 = Color3.fromRGB(3, 25, 99)
     Background.BorderSizePixel = 0
     Background.Size = UDim2.new(1, 0, 1, 0)
     Background.ZIndex = 999
@@ -442,12 +444,45 @@ Spawner.runJumpscare = function(config)
     Face.Position = UDim2.new(0.5, 0, 0.5, 0)
     Face.ResampleMode = Enum.ResamplerMode.Pixelated
     Face.Size = UDim2.new(0, 150, 0, 150)
-    Face.Image = image1
+    Face.Image = "rbxassetid://11862656458"
 
-    Face.Parent = Background
     Background.Parent = JumpscareGui
-    JumpscareGui.Parent = CG
+    Face.Parent = Background
+local scare = Instance.new("Sound")
+scare.Parent = JumpscareGui
+scare.Name = "MyEarsBurn"
+scare.SoundId = "rbxassetid://0"
+scare.PlaybackSpeed = 3
+scare.Volume = 3
+
+local shift = Instance.new("PitchShiftSoundEffect")
+shift.Octave = 0.5
+shift.Parent = scare
+
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = scare
+distort.Level = 0.75
+
+local eq = Instance.new("EqualizerSoundEffect")
+eq.HighGain = 10
+eq.MidGain = 10
+eq.LowGain = 3.7
+eq.Parent = scare
     
+        task.spawn(function()
+            while JumpscareGui.Parent do
+                Background.BackgroundColor3 = Color3.fromRGB(3, 25, 99)
+                task.wait(math.random(25, 100) / 1000)
+                Background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                task.wait(math.random(25, 100) / 1000)
+            end
+        end)
+
+    game.TweenService:Create(Face, TweenInfo.new(0.6), {Size = UDim2.new(0, 1850, 0, 1050), ImageTransparency = 0}):Play()
+    scare:Play()
+    task.wait(0.7)
+    JumpscareGui:Destroy()
+
     -- Tease
 
     local teaseConfig = config.Tease
