@@ -43,8 +43,8 @@ end
 function dragEntity(entityModel, pos, speed)
     local entityConnections = EntityConnections[entityModel]
 
-    if entityConnections.movementDoor then
-        entityConnections.movementDoor:Disconnect()
+    if entityConnections.movementNode then
+        entityConnections.movementNode:Disconnect()
     end
 
     entityConnections.movementDoor = RS.Stepped:Connect(function(_, step)
@@ -55,12 +55,12 @@ function dragEntity(entityModel, pos, speed)
             if diff.Magnitude > 0.1 then
                 entityModel:PivotTo(CFrame.new(rootPos + diff.Unit * math.min(step * speed, diff.Magnitude)))
             else
-                entityConnections.movementDoor:Disconnect()
+                entityConnections.movementNode:Disconnect()
             end
         end
     end)
 
-    repeat task.wait() until not entityConnections.movementDoor.Connected
+    repeat task.wait() until not entityConnections.movementNode.Connected
 end
 
 function loadSound(soundData)
@@ -142,16 +142,16 @@ Spawner.runEntity = function(entityTable)
     local doors = {}
 
     for _, room in next, workspace.CurrentRooms:GetChildren() do
-        local doors = room:FindFirstChild("Door")
+        local nodes = room:FindFirstChild("PathfindNodes")
         
         if doors then
             doors = doors:GetChildren()
         else
-            local fakeDoor = Instance.new("Part")
-            fakeDoor.Name = "1"
-            fakeDoor.CFrame = room:WaitForChild("RoomExit").CFrame - Vector3.new(0, room.RoomExit.Size.Y / 2, 0)
+            local fakeNode = Instance.new("Part")
+            fakeNode.Name = "1"
+            fakeNode.CFrame = room:WaitForChild("RoomExit").CFrame - Vector3.new(0, room.RoomExit.Size.Y / 2, 0)
 
-            doors = {fakeDoor}
+            nodes = {fakeNode}
         end
 
         table.sort(pathfindNodes, function(a, b)
@@ -159,20 +159,20 @@ Spawner.runEntity = function(entityTable)
         end)
 
         for _, node in next, pathfindNodes do
-            doors[#doors + 1] = node
+            nodes[#nodes + 1] = node
         end
     end
 
     -- Spawn
 
     local entityModel = entityTable.Model:Clone()
-    local startDoorIndex = entityTable.Config.BackwardsMovement and #nodes or 1
-    local startDoorOffset = entityTable.Config.BackwardsMovement and -50 or 50
+    local startNodeIndex = entityTable.Config.BackwardsMovement and #nodes or 1
+    local startNodeOffset = entityTable.Config.BackwardsMovement and -50 or 50
 
     EntityConnections[entityModel] = {}
     local entityConnections = EntityConnections[entityModel]
     
-    entityModel:PivotTo(doors[startDoorIndex].CFrame * CFrame.new(0, 0, startDoorOffset) + Vector3.new(0, 3.5 + entityTable.Config.HeightOffset, 0))
+    entityModel:PivotTo(doors[startNodeIndex].CFrame * CFrame.new(0, 0, startNodeOffset) + Vector3.new(0, 3.5 + entityTable.Config.HeightOffset, 0))
     entityModel.Parent = workspace
     task.spawn(entityTable.Debug.OnEntitySpawned)
 
