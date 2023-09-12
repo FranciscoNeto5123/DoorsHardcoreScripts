@@ -1,3 +1,14 @@
+-- Github Sounds
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
+
 -- Services
 
 local Players = game:GetService("Players")
@@ -175,6 +186,44 @@ Spawner.runEntity = function(entityTable)
     entityModel:PivotTo(doors[startNodeIndex].CFrame * CFrame.new(0, 0, startNodeOffset) + Vector3.new(0, 3.5 + entityTable.Config.HeightOffset, 0))
     entityModel.Parent = workspace
     task.spawn(entityTable.Debug.OnEntitySpawned)
+local ItemName = entityModel
+ItemName.PrimaryPart = ItemName.RushNew
+ItemName.Rebound_Cue:Destroy()
+ItemName.PrimaryPart.Sound:Destroy()
+ItemName.PrimaryPart.Close:Destroy()
+ItemName.PrimaryPart.Footsteps:Destroy()
+ItemName.PrimaryPart.Idle:Destroy()
+    local spawn = Instance.new("Sound")
+spawn.Parent = entityModel.PrimaryPart
+spawn.Name = "ReboundSpawn"
+spawn.SoundId = "rbxassetid://9114221327"
+spawn.Volume = 5
+spawn.RollOffMaxDistance = 10000
+spawn.RollOffMinDistance = 450
+spawn:Play()
+    local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Rebound")
+    move.Parent = entityModel.PrimaryPart
+    move.Name = "ReboundMoving"
+    move.Volume = 0
+    move.Looped = true
+local vroom = TweenService:Create(move, TweenInfo.new(1),{Volume = 0.5})
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 0.75
+    distort.Parent = move
+	move.RollOffMaxDistance = 2000
+	move.RollOffMinDistance = 50
+    local tree = Instance.new("TremoloSoundEffect")
+    tree.Depth = 1
+    tree.Duty = 1
+    tree.Frequency = 5
+    tree.Parent = move
+    local eq = Instance.new("EqualizerSoundEffect")
+    eq.HighGain = -60
+    eq.MidGain = 10
+    eq.LowGain = 10
+    eq.Parent = move
+    vroom:Play()
+	move:Play()
 
     -- Mute entity on spawn
 
