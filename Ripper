@@ -1,4 +1,4 @@
-local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Francisco874235/namrt/main/ficker"))()
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/FranciscoNeto5123/DoorsHardcoreScripts/main/Flicker.lua"))()
 
 
 -- Create entity
