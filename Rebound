@@ -187,7 +187,7 @@ Spawner.runEntity = function(entityTable)
     entityModel.Parent = workspace
     task.spawn(entityTable.Debug.OnEntitySpawned)
 local ItemName = entityModel
-ItemName.PrimaryPart = ItemName.RushNew
+ItemName.PrimaryPart = ItemName.Rebound
 ItemName.Rebound_Cue:Destroy()
 ItemName.PrimaryPart.Sound:Destroy()
 ItemName.PrimaryPart.Close:Destroy()
@@ -203,8 +203,8 @@ spawn.RollOffMinDistance = 450
 spawn:Play()
     local move = GetGitSound("https://github.com/FranciscoNeto5123/Sounds/blob/main/ReboundMove.mp3","Rebound")
     move.Parent = entityModel.PrimaryPart
-    move.Name = "ReboundMoving"
-    move.Volume = 0
+    move.Name = "Sound"
+    move.Volume = 2
     move.Looped = true
 local vroom = TweenService:Create(move, TweenInfo.new(1),{Volume = 0.5})
     local distort = Instance.new("DistortionSoundEffect")
