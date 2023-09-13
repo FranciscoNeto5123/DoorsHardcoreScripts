@@ -358,7 +358,7 @@ end
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
         entityModel.PrimaryPart["Door Murder"]:Play()
-        wait(2.3)
+        wait(8)
         entityModel:Destroy()
     end
 end
