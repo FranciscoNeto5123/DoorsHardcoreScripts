@@ -357,6 +357,13 @@ end
         task.spawn(entityTable.Debug.OnEntityDespawned)
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
+        ocal CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(8,8,8,8,8,8,8,8)
         entityModel.PrimaryPart["Door Murder"]:Play()
         wait(8)
         entityModel:Destroy()
