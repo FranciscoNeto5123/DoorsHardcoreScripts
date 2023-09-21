@@ -355,10 +355,9 @@ end
         end
         
         task.spawn(entityTable.Debug.OnEntityDespawned)
+        entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
         entityModel.PrimaryPart["Door Murder"]:Play()
-        wait(0.5)
-        entityModel.PrimaryPart.Anchored = false
         wait(8)
         entityModel:Destroy()
     end
