@@ -1,15 +1,23 @@
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
+
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/FranciscoNeto5123/DoorsHardcoreScripts/main/Flicker.lua"))()
 
 
 -- Create entity
 local entityTable = Spawner.createEntity({
     CustomName = "Death", -- Custom name of your entity
-    Model = "rbxassetid://14767511557", -- Can be GitHub file or rbxassetid
+    Model = "rbxassetid://14849205530", -- Can be GitHub file or rbxassetid
     Speed = 200, -- Percentage, 100 = default Rush speed
     DelayTime = 8, -- Time before starting cycles (seconds)
     HeightOffset = 6,
     CanKill = true,
-    KillRange = 70,
+    KillRange = 50,
     BackwardsMovement = false,
     BreakLights = false,
     FlickerLights = {
