@@ -12,10 +12,10 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Franc
 -- Create entity
 local entityTable = Spawner.createEntity({
     CustomName = "Death", -- Custom name of your entity
-    Model = "rbxassetid://14849205530", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/FranciscoNeto5123/Entities/blob/main/Ripper.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 200, -- Percentage, 100 = default Rush speed
     DelayTime = 8, -- Time before starting cycles (seconds)
-    HeightOffset = 6,
+    HeightOffset = -0.5,
     CanKill = true,
     KillRange = 50,
     BackwardsMovement = false,
@@ -31,7 +31,7 @@ local entityTable = Spawner.createEntity({
     },
     CamShake = {
         true, -- Enabled/Disabled
-        {13, 37, 0.1, 1}, -- Shake values (don't change if you don't know)
+        {10, 10, 1, 1}, -- Shake values (don't change if you don't know)
         100, -- Shake start distance (from Entity to you)
     },
     Jumpscare = {
