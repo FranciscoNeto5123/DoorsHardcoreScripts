@@ -1,7 +1,3 @@
--- Range DoorMurder
-local Range = math.random(1000, 1000)
-
-end
 -- Services
 
 local Players = game:GetService("Players")
@@ -367,8 +363,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 	camara.CFrame = camara.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(34,18,18,18,18,18,18,14)
-camShake.Parent = Range
+camShake:ShakeOnce(42,26,26,26,26,26,26,18)
         wait(8)
         entityModel:Destroy()
     end
