@@ -368,7 +368,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 end)
 camShake:Start()
 camShake:ShakeOnce(34,18,18,18,18,18,18,14)
-camShake.LikedIt = Range
+camShake.Parent = Range
         wait(8)
         entityModel:Destroy()
     end
