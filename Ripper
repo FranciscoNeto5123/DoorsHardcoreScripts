@@ -4,7 +4,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 	camara.CFrame = camara.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2)
+camShake:ShakeOnce(4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4)
 
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/FranciscoNeto5123/DoorsHardcoreScripts/main/Flicker.lua"))()
 
