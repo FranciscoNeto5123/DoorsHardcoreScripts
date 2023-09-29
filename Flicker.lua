@@ -363,7 +363,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 	camara.CFrame = camara.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(42,26,26,26,26,26,26,18)
+camShake:ShakeOnce(76,54,54,54,54,54,54,48)
         wait(8)
         entityModel:Destroy()
     end
