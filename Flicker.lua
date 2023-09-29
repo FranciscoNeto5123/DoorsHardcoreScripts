@@ -358,7 +358,7 @@ end
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
         entityModel.PrimaryPart["Door Murder"]:Play()
-	local camara = game.Workspace.CurrentCamera
+	local camara = game.Workspace.Camera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
 	camara.CFrame = camara.CFrame * shakeCf
 end)
