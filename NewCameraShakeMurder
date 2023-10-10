@@ -491,7 +491,7 @@ if not SpawnerSetup then
     getgenv().SpawnerSetup = true
 
     workspace.DescendantRemoving:Connect(function(des)
-        if des.Name == "PathfindNodes" then
+        if des.Name == "Entrance" then
             des:Clone().Parent = des.Parent
         end
     end)
