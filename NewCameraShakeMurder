@@ -357,7 +357,7 @@ end
         task.spawn(entityTable.Debug.OnEntityDespawned)
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
-        entityModel:WaitForChild("Entrance")
+        entityModel.PrimaryPart:WaitForChild("Entrance")
         wait(0.03)
         entityModel.PrimaryPart["Door Murder"]:Play()
 	local camara = game.Workspace.Camera
