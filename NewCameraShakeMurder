@@ -357,15 +357,15 @@ end
         task.spawn(entityTable.Debug.OnEntityDespawned)
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
+        entityModel:WaitForChild("Entrance")
+        wait(0.03)
+        entityModel.PrimaryPart["Door Murder"]:Play()
 	local camara = game.Workspace.Camera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
 	camara.CFrame = camara.CFrame * shakeCf
 end)
 camShake:Start()
 camShake:ShakeOnce(534,564,538,564,534,538,564,538,540)
-        entityModel:WaitForChild("Entrance")
-        wait(0.03)
-        entityModel.PrimaryPart["Door Murder"]:Play()
         wait(8)
         entityModel:Destroy()
     end
