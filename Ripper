@@ -15,7 +15,7 @@ local entityTable = Spawner.createEntity({
     Model = "https://github.com/FranciscoNeto5123/Entities/blob/main/RipperV3.rbxm?raw=true", -- Can be GitHub file or rbxassetid
     Speed = 200, -- Percentage, 100 = default Rush speed
     DelayTime = 8, -- Time before starting cycles (seconds)
-    HeightOffset = -0.5,
+    HeightOffset = 6,
     CanKill = true,
     KillRange = 50,
     BackwardsMovement = false,
