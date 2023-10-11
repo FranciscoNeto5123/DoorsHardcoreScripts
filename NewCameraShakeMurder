@@ -357,7 +357,6 @@ end
         task.spawn(entityTable.Debug.OnEntityDespawned)
         entityModel.PrimaryPart.Anchored = false
         entityModel.PrimaryPart.CanCollide = false
-        entityModel.PrimaryPart:WaitForChild("Exit")
         entityModel.PrimaryPart["Door Murder"]:Play()
 	local camara = game.Workspace.Camera
 local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
