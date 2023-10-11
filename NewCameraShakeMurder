@@ -363,7 +363,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 	camara.CFrame = camara.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(534,564,538,564,534,538,564,538,540)
+camShake:ShakeOnce(876,856,888,864,856,888,864,856,875,645)
         wait(8)
         entityModel:Destroy()
     end
@@ -489,7 +489,7 @@ if not SpawnerSetup then
     getgenv().SpawnerSetup = true
 
     workspace.DescendantRemoving:Connect(function(des)
-        if des.Name == "Entrance" then
+        if des.Name == "PathfindNodes" then
             des:Clone().Parent = des.Parent
         end
     end)
